@@ -1,34 +1,70 @@
-import React, { useState } from 'react';
 import './LoginForm.css';
-/* import LocalStorage from './LocalStorage'; */
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginForm() {
+    let navigate = useNavigate();
+
     const [enteredUserName, setEnteredUserName] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
+
+    const [userNameErr, setUserNameErr] = useState({});
+    const [passwordErr, setPasswordErr] = useState({});
+
     
     const userChangeHandler = (e) => {
         setEnteredUserName(e.target.value);
-        console.log('username changed');
+        /* console.log('username changed'); */
     }
 
     const passwordChangeHandler = (e) => {
         setEnteredPassword(e.target.value);
-        console.log('password changed');
+        /* console.log('password changed'); */
     }
 
     const submitFormHandler = (e) => {
         e.preventDefault();
-        
+                
         const formData = {
             user: enteredUserName,
             password: enteredPassword
         };
-        console.log(formData);
-        setEnteredUserName('');
-        setEnteredPassword('');
+
+        const isValid = formValidation();
+        if(isValid) {
+            setEnteredUserName('');
+            setEnteredPassword('');
+            navigate("/home");
+        }
+
+        
+
+        console.log(formData);        
     };
 
+    const formValidation = () => {
+        const userNameErr = {};
+        const passwordErr = {};
+        let isValid = true;
+
+        if(enteredUserName.trim().length < 5) {
+            userNameErr.userNameLength = 'Username must have at least 5 characters.'
+            isValid = false;
+        }       
+
+        if(enteredPassword.trim().length < 8) {
+            passwordErr.passwordLength = "Password must have at least 8 characters.";
+            isValid = false;
+        }
+
+        setUserNameErr(userNameErr);
+        setPasswordErr(passwordErr);
+        return isValid;
+    }
+
     return (
+    <div>
         <form onSubmit={submitFormHandler}>
         <div className='form-input__controls'>
             <div className='form-input__control'>
@@ -37,7 +73,11 @@ function LoginForm() {
                    type='text' 
                     value={enteredUserName}
                     onChange={userChangeHandler}  
-                />
+                    
+                />                
+                {Object.keys(userNameErr).map((key) => {
+                    return <div>{userNameErr[key]}</div>
+                })}
             </div>
             <div className='form-input__control'>
                 <label>Password</label>
@@ -45,7 +85,11 @@ function LoginForm() {
                     type='text'
                     value={enteredPassword}
                     onChange={passwordChangeHandler}
+                    
                 />
+                {Object.keys(passwordErr).map((key) => {
+                    return <div>{passwordErr[key]}</div>
+                })}
             </div>
              <div className='form-input__checkbox'>
                 <label>
@@ -59,6 +103,7 @@ function LoginForm() {
             
         </div>
         </form>
+    </div>
     )
 }
 
