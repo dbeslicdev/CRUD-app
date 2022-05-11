@@ -12,7 +12,7 @@
     display: block;
   }
   
-  .form-input__control input {
+  .form-input__control input, select {
     font: inherit;
     padding: 0.5rem;
     border-radius: 5px;
@@ -21,9 +21,14 @@
     max-width: 100%;
   }
 
-  .form-input__checkbox {
-      padding: 0.5rem;
+  .form-input__action {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;    
+    width: 10rem;
   }
+
+
   
  
 

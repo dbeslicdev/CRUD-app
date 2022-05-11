@@ -1,5 +1,8 @@
 import './LoginForm.css';
 import React, { useState } from 'react';
+import 'antd/dist/antd.css';
+import { Layout } from 'antd';
+import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -26,21 +29,19 @@ function LoginForm() {
     const submitFormHandler = (e) => {
         e.preventDefault();
                 
-        const formData = {
+        /* const formData = {
             user: enteredUserName,
             password: enteredPassword
-        };
+        }; */
 
         const isValid = formValidation();
         if(isValid) {
             setEnteredUserName('');
             setEnteredPassword('');
             navigate("/home");
-        }
+        }        
 
-        
-
-        console.log(formData);        
+        /* console.log(formData); */        
     };
 
     const formValidation = () => {
@@ -65,6 +66,8 @@ function LoginForm() {
 
     return (
     <div>
+    <Layout className="layout">
+        <Navbar/>
         <form onSubmit={submitFormHandler}>
         <div className='form-input__controls'>
             <div className='form-input__control'>
@@ -98,11 +101,12 @@ function LoginForm() {
                 </label>
             </div >
             <div className='form-input__action'> 
-            <button type="submit">Submit</button>
+            <button type="submit">Submit</button>            
             </div>
             
         </div>
-        </form>
+        </form>        
+    </Layout>
     </div>
     )
 }
