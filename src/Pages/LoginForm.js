@@ -2,12 +2,11 @@ import './LoginForm.css';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
-import Navbar from './Navbar';
-import { useNavigate } from 'react-router-dom';
 
 
-function LoginForm() {
-    let navigate = useNavigate();
+
+function LoginForm() {   
+    
 
     const [enteredUserName, setEnteredUserName] = useState('');
     const [enteredPassword, setEnteredPassword] = useState('');
@@ -16,20 +15,27 @@ function LoginForm() {
     const [passwordErr, setPasswordErr] = useState({});
 
     
+
+
+    
     const userChangeHandler = (e) => {
         setEnteredUserName(e.target.value);
         /* console.log('username changed'); */
     }
+
+
 
     const passwordChangeHandler = (e) => {
         setEnteredPassword(e.target.value);
         /* console.log('password changed'); */
     }
 
+
+
     const submitFormHandler = (e) => {
         e.preventDefault();
-                
-        /* const formData = {
+
+            /* const formData = {
             user: enteredUserName,
             password: enteredPassword
         }; */
@@ -37,12 +43,13 @@ function LoginForm() {
         const isValid = formValidation();
         if(isValid) {
             setEnteredUserName('');
-            setEnteredPassword('');
-            navigate("/home");
+            setEnteredPassword('');              
         }        
 
         /* console.log(formData); */        
     };
+
+    
 
     const formValidation = () => {
         const userNameErr = {};
@@ -66,8 +73,7 @@ function LoginForm() {
 
     return (
     <div>
-    <Layout className="layout">
-        <Navbar/>
+    <Layout className="layout">        
         <form onSubmit={submitFormHandler}>
         <div className='form-input__controls'>
             <div className='form-input__control'>

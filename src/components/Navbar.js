@@ -6,11 +6,11 @@ import { Menu } from 'antd';
 export function Navbar () {
 
     const items = [
-        {label: 'Home'},
-        {label: 'Profile'}
+        {label: 'Home'}        
     ]
     
  return (
+    
     <Menu
         theme="dark"
         mode="horizontal"

@@ -1,6 +1,9 @@
 import React from 'react';
+import {useState} from 'react';
 
-export const Profile = () => {
+export const Login = () => {
+    const [user, setUser] = useState('');
+
     return (
         <div>
             
