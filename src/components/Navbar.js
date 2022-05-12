@@ -6,7 +6,9 @@ import { Menu } from 'antd';
 export function Navbar () {
 
     const items = [
-        {label: 'Home'}        
+        {label: 'Home'},
+        {label: 'Contact'}        
+                
     ]
     
  return (

@@ -2,7 +2,7 @@ import './NewUserForm.css';
 import 'antd/dist/antd.css';
 import React, { useState } from 'react';
 
-function NewUserForm() {
+const NewUserForm = (props) => {
 
     const [enteredFirstName, setEnteredFirstName] = useState('');
     const [enteredLastName, setEnteredLastName] = useState('');
@@ -40,13 +40,13 @@ function NewUserForm() {
     const submitFormHandler = (e) => {
         e.preventDefault();
 
-        /* const formData = {
+        const formData = {
             firstName: enteredFirstName,
             lastName: enteredLastName,
             date: enteredDate,
             contactType: selectedContactType,
             contactData: enteredContact
-        }; */
+        };
 
         const isValid = formValidation();
         if(isValid) {
@@ -56,9 +56,9 @@ function NewUserForm() {
             setSelectedContactType('');
             setEnteredContact('');
             alert('Your form has been submitted successfully');
-        }
-
-        /* console.log(formData); */
+        }        
+        
+        props.onSaveFormData(formData);
     };
 
 
@@ -70,6 +70,11 @@ function NewUserForm() {
         setEnteredLastName('');
         setEnteredDate('');        
         setEnteredContact('');
+        
+        setFirstNameErr('');
+        setLastNameErr('');
+        setDateErr('');        
+        setContactErr('');
     }
 
 

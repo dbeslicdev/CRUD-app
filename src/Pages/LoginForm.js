@@ -43,7 +43,9 @@ function LoginForm() {
         const isValid = formValidation();
         if(isValid) {
             setEnteredUserName('');
-            setEnteredPassword('');              
+            setEnteredPassword(''); 
+            setUserNameErr('');
+            setPasswordErr('');            
         }        
 
         /* console.log(formData); */        

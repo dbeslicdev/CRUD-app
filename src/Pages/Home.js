@@ -6,11 +6,22 @@ import { Layout } from 'antd';
 import Navbar from '../components/Navbar';
 
 
-function Home() {
+
+
+function Home(props) {
+
+    const saveFormDataHandler = (enteredFormData) => {
+        const formData = {
+          ...enteredFormData          
+        };
+        props.onAddContact(formData);
+        
+      };
+
     return (
     <Layout className="layout">    
         <Navbar/>     
-         <NewUserForm/>        
+         <NewUserForm onSaveFormData={saveFormDataHandler}/>        
     </Layout>
     )
 }
