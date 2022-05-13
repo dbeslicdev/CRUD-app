@@ -55,7 +55,7 @@ function TableTemplate() {
     {
       title: 'Contact',
       dataIndex: 'contact',
-      key: 'key'
+      key: 'key',
     },
   ] */
   
