@@ -3,11 +3,11 @@ import LoginForm from './Pages/LoginForm';
 import Home from './Pages/Home';
 import ErrorPage from './Pages/ErrorPage';
 import ContactInfo from './Pages/ContactInfo';
-/* import ProtectedRoute  from './components/ProtectedRoute';
-import {useNavigate} from 'react-router-dom'; */
+
+/* import ProtectedRoute  from './components/ProtectedRoute';*/
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+function App(props) {
   
 /*   const [isAuth, setAuth] = useState(false);
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ function App() {
 
   const addContactHandler = (contact) => {
     setContact((prevContacts) => {
-      return [contact, ...prevContacts];      
-    });
+      return [...prevContacts, contact];      
+    });    
     console.log(contact);
   };
   
@@ -32,11 +32,12 @@ function App() {
       <Router>
         <Routes>             
           {/* <Route path="/form" element={<LoginForm onSubmitHandler={login}/>}/> */}
-          <Route path="*" component={<ErrorPage/>}/>
-          <Route path="/form" component={<LoginForm/>}/>
+          <Route path="*" element={<ErrorPage/>}/>
+          <Route path="/form" element={<LoginForm/>}/>
           {/* <Route element={<ProtectedRoute isAuth={isAuth} />} > */}
           <Route path="/home" element={<Home onAddContact={addContactHandler}/>}/>  
           <Route path ="/contact-info" element={<ContactInfo items={contact} />}/>
+
           {/* </Route>  */}         
         </Routes>
       </Router>

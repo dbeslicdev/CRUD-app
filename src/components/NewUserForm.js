@@ -1,6 +1,7 @@
 import './NewUserForm.css';
 import 'antd/dist/antd.css';
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const NewUserForm = (props) => {
 
@@ -45,7 +46,8 @@ const NewUserForm = (props) => {
             lastName: enteredLastName,
             date: enteredDate,
             contactType: selectedContactType,
-            contactData: enteredContact
+            contactData: enteredContact,
+            id: uuidv4()
         };
 
         const isValid = formValidation();
