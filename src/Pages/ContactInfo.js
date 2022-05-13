@@ -6,7 +6,7 @@ import TableTemplate from '../components/TableTemplate';
 
 
 
-function ContactInfo(props) {
+function ContactInfo() {  
 
    return (
     <Layout className="layout">                     

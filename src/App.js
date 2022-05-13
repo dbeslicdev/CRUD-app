@@ -7,7 +7,7 @@ import ContactInfo from './Pages/ContactInfo';
 /* import ProtectedRoute  from './components/ProtectedRoute';*/
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App(props) {
+function App() {
   
 /*   const [isAuth, setAuth] = useState(false);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function App(props) {
   const addContactHandler = (contact) => {
     setContact((prevContacts) => {
       return [...prevContacts, contact];      
-    });    
+    });
     console.log(contact);
   };
   
@@ -36,8 +36,7 @@ function App(props) {
           <Route path="/form" element={<LoginForm/>}/>
           {/* <Route element={<ProtectedRoute isAuth={isAuth} />} > */}
           <Route path="/home" element={<Home onAddContact={addContactHandler}/>}/>  
-          <Route path ="/contact-info" element={<ContactInfo items={contact} />}/>
-
+          <Route path ="/contact-info" element={<ContactInfo/>}/>
           {/* </Route>  */}         
         </Routes>
       </Router>

@@ -31,7 +31,7 @@ function TableTemplate() {
     
   ];
 
- /*  const columns = [
+  const columns = [
     {
       title: 'Name',
       dataIndex: 'firstName',
@@ -57,14 +57,14 @@ function TableTemplate() {
       dataIndex: 'contact',
       key: 'key'
     },
-  ] */
+  ]
   
   
   return (
   <div>
     <Table
-    dataSource ={[data]}
-    columns ={[/* columns */]}
+    dataSource ={data}
+    columns ={columns}
     />
   </div>
   )
