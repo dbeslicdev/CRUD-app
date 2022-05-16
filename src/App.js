@@ -17,14 +17,14 @@ function App() {
     navigate('/home');
   } */
 
-  const [contact, setContact] = useState([]);
+  const [contacts, setContact] = useState([]);
 
   const addContactHandler = (contact) => {
     setContact((prevContacts) => {
-      return [...prevContacts, contact];      
-    });
-    console.log(contact);
-  };
+      return [...prevContacts, contact];            
+    });     
+    /* console.log(contact); */
+  };  
   
 
   return (
@@ -36,8 +36,8 @@ function App() {
           <Route path="/form" element={<LoginForm/>}/>
           {/* <Route element={<ProtectedRoute isAuth={isAuth} />} > */}
           <Route path="/home" element={<Home onAddContact={addContactHandler}/>}/>  
-          <Route path ="/contact-info" element={<ContactInfo/>}/>
-          {/* </Route>  */}         
+          <Route path ="/contact-info" element={<ContactInfo items={contacts}/>}/>
+                  
         </Routes>
       </Router>
      );

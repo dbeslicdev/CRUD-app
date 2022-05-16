@@ -2,6 +2,7 @@ import './LoginForm.css';
 import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -14,6 +15,7 @@ function LoginForm() {
     const [userNameErr, setUserNameErr] = useState({});
     const [passwordErr, setPasswordErr] = useState({});
 
+    let navigate = useNavigate();
     
 
 
@@ -43,7 +45,8 @@ function LoginForm() {
         const isValid = formValidation();
         if(isValid) {
             setEnteredUserName('');
-            setEnteredPassword('');              
+            setEnteredPassword(''); 
+            navigate('/home');
         }   
         /* console.log(formData); */        
     };
