@@ -7,8 +7,7 @@ export function Navbar () {
 
     const items = [
         {label: 'Home'},
-        {label: 'Contact'}        
-                
+        {label: 'Contact'}                   
     ]
     
  return (

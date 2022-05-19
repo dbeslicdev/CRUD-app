@@ -1,35 +1,24 @@
 import React from "react";
-import './Home.css';
-import 'antd/dist/antd.css';
-import NewUserForm from "../components/NewUserForm";
-import { Layout } from 'antd';
-import Navbar from '../components/Navbar';
-import {useNavigate} from "react-router-dom";
-
-
-
-
+import "./Home.css";
+import "antd/dist/antd.css";
+import { Layout } from "antd";
+import Navbar from "../components/Navbar";
+import HomeForm from "../components/home/HomeForm";
 
 function Home(props) {
+  const saveFormDataHandler = (enteredFormData) => {
+    const formData = {
+      ...enteredFormData,
+    };
+    props.onAddContact(formData);
+  };
 
-    let navigate = useNavigate();
-
-    const saveFormDataHandler = (enteredFormData) => {
-        const formData = {
-          ...enteredFormData          
-        };
-        props.onAddContact(formData);
-        navigate('/contact-info');        
-      };
-    
-    
-
-    return (
-    <Layout className="layout">    
-        <Navbar/>     
-         <NewUserForm onSaveFormData={saveFormDataHandler}/>        
+  return (
+    <Layout className="layout">
+      <Navbar />
+      <HomeForm onSaveFormData={saveFormDataHandler} />
     </Layout>
-    )
+  );
 }
 
 export default Home;

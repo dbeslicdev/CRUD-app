@@ -1,46 +1,36 @@
-import {React, useState} from 'react';
-import LoginForm from './Pages/LoginForm';
-import Home from './Pages/Home';
-import ErrorPage from './Pages/ErrorPage';
-import ContactInfo from './Pages/ContactInfo';
+import { React, useState } from "react";
+import Login from "./Pages/Login";
+import Home from "./Pages/Home";
+import ErrorPage from "./Pages/ErrorPage";
+import ContactInfo from "./Pages/ContactInfo";
 
-/* import ProtectedRoute  from './components/ProtectedRoute';*/
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  
-/*   const [isAuth, setAuth] = useState(false);
-  const navigate = useNavigate();
-
-  const login = () => {
-    setAuth(true);
-    navigate('/home');
-  } */
-
   const [contacts, setContact] = useState([]);
 
   const addContactHandler = (contact) => {
     setContact((prevContacts) => {
-      return [...prevContacts, contact];            
-    });     
-    /* console.log(contact); */
-  };  
-  
+      return [...prevContacts, contact];
+    });
+  };
 
   return (
-   
-      <Router>
-        <Routes>             
-          {/* <Route path="/form" element={<LoginForm onSubmitHandler={login}/>}/> */}
-          <Route path="*" element={<ErrorPage/>}/>
-          <Route path="/form" element={<LoginForm/>}/>
-          {/* <Route element={<ProtectedRoute isAuth={isAuth} />} > */}
-          <Route path="/home" element={<Home onAddContact={addContactHandler}/>}/>  
-          <Route path ="/contact-info" element={<ContactInfo items={contacts}/>}/>
-                  
-        </Routes>
-      </Router>
-     );
+    <Router>
+      <Routes>
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/home"
+          element={<Home onAddContact={addContactHandler} />}
+        />
+        <Route
+          path="/contact-info"
+          element={<ContactInfo items={contacts} />}
+        />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
