@@ -58,6 +58,13 @@ function HomeForm(props) {
     return isValid;
   };
 
+  /* const resetFormHandler = (e) => {
+    e.preventDefault();
+
+    setFormValues("");
+    setErrors("");
+  }; */
+
   return (
     <form onSubmit={submitFormHandler}>
       <div className="form-input__controls">

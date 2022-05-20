@@ -8,24 +8,6 @@ import { Table, Space } from "antd";
 function ContactInfo(props) {
   const contacts = props.items;
 
-  const [dataSource, setDataSource] = useState([]);
-
-  useEffect(() => {
-    for (let i = 0; i < contacts; i++) {
-      contacts.push({
-        id: `id ${i}`,
-        firstname: `firstname ${i}`,
-        lastname: `lastname ${i}`,
-        date: `date ${i}`,
-        contactType: `contacttype ${i}`,
-        contactData: `contact ${i}`,
-      });
-    }
-
-    setDataSource(contacts);
-    console.log(contacts);
-  }, []);
-
   const columns = [
     {
       title: "Name",
@@ -56,10 +38,10 @@ function ContactInfo(props) {
       title: "Action",
       dataIndex: "",
       key: "x",
-      render: () => (
+      render: (record) => (
         <Space size="middle">
           <a>Update</a>
-          <a>Delete</a>
+          <a onClick={() => props.onDeleteUser(record)}>Delete</a>
         </Space>
       ),
     },
@@ -68,7 +50,7 @@ function ContactInfo(props) {
   return (
     <Layout className="layout">
       <Navbar />
-      <Table dataSource={dataSource} columns={columns} />
+      <Table dataSource={contacts} columns={columns} />
     </Layout>
   );
 }

@@ -15,6 +15,12 @@ function App() {
     });
   };
 
+  const deleteUserHandler = (record) => {
+    setContact((prevContacts) => {
+      return prevContacts.filter((contact) => contact.id != record.id);
+    });
+  };
+
   return (
     <Router>
       <Routes>
@@ -26,7 +32,9 @@ function App() {
         />
         <Route
           path="/contact-info"
-          element={<ContactInfo items={contacts} />}
+          element={
+            <ContactInfo items={contacts} onDeleteUser={deleteUserHandler} />
+          }
         />
       </Routes>
     </Router>
