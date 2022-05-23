@@ -1,12 +1,11 @@
 import React from "react";
-import { useForm } from "../../hooks/useForm";
-/**/
 
-function HomeForm(props) {
-  const { handleInputChange } = useForm({});
-  const formValues = props.formValues;
-  const errors = props.errors;
-
+function HomeForm({
+  formValues,
+  errors,
+  submitFormHandler,
+  handleInputChange,
+}) {
   return (
     <form onSubmit={submitFormHandler}>
       <div className="form-input__controls">

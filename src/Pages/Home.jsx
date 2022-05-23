@@ -1,23 +1,24 @@
 import React from "react";
 import "./Home.css";
 import "antd/dist/antd.css";
-import { Layout } from "antd";
 import Navbar from "../components/Navbar";
 import HomeForm from "../components/home/HomeForm";
+import { Layout } from "antd";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "../hooks/useForm";
 
 function Home(props) {
-  const { formValues, setFormValues, setErrors } = useForm({
-    firstname: "",
-    lastname: "",
-    date: "",
-    contacttype: "",
-    contact: "",
-  });
+  const { formValues, errors, setFormValues, setErrors, handleInputChange } =
+    useForm({
+      firstname: "",
+      lastname: "",
+      date: "",
+      contacttype: "",
+      contact: "",
+    });
 
-  let navigate = useNavigate();
+  let navigate = useNavigate("");
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -36,7 +37,8 @@ function Home(props) {
       setFormValues("");
       navigate("/contact-info");
       alert("Your form has been submitted successfully");
-      props.onSaveFormData(formData);
+      props.onAddContact(formData);
+      console.log(formData);
     }
   };
 
@@ -64,26 +66,18 @@ function Home(props) {
 
   /* const resetFormHandler = (e) => {
     e.preventDefault();
-
     setFormValues("");
     setErrors("");
   }; */
-
-  const saveFormDataHandler = (enteredFormData) => {
-    const formData = {
-      ...enteredFormData,
-    };
-    props.onAddContact(formData);
-    console.log(formData);
-  };
 
   return (
     <Layout className="layout">
       <Navbar />
       <HomeForm
-        onSaveFormData={saveFormDataHandler}
-        formValues={props.formValues}
-        errors={props.errors}
+        formValues={formValues}
+        errors={errors}
+        submitFormHandler={submitFormHandler}
+        handleInputChange={handleInputChange}
       />
     </Layout>
   );
