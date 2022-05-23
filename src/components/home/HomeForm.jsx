@@ -1,69 +1,11 @@
 import React from "react";
 import { useForm } from "../../hooks/useForm";
-import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+/**/
 
 function HomeForm(props) {
-  const { formValues, errors, handleInputChange, setFormValues, setErrors } =
-    useForm({
-      firstname: "",
-      lastname: "",
-      date: "",
-      contacttype: "",
-      contact: "",
-    });
-
-  let navigate = useNavigate();
-
-  const submitFormHandler = (e) => {
-    e.preventDefault();
-    const isValid = formValidation();
-
-    const formData = {
-      firstname: formValues.firstname,
-      lastname: formValues.lastname,
-      date: formValues.date,
-      contacttype: formValues.contacttype,
-      contact: formValues.contact,
-      id: uuidv4(),
-    };
-
-    if (isValid) {
-      setFormValues("");
-      navigate("/contact-info");
-      alert("Your form has been submitted successfully");
-      props.onSaveFormData(formData);
-    }
-  };
-
-  const formValidation = () => {
-    let isValid = true;
-
-    if (formValues.firstname.trim().length < 1) {
-      setErrors(true);
-      isValid = false;
-    } else if (formValues.lastname.trim().length < 1) {
-      setErrors(true);
-      isValid = false;
-    } else if (!formValues.date) {
-      setErrors(true);
-      isValid = false;
-    } else if (!formValues.contacttype) {
-      setErrors(true);
-      isValid = false;
-    } else if (formValues.contact.trim().length < 1) {
-      setErrors(true);
-      isValid = false;
-    }
-    return isValid;
-  };
-
-  /* const resetFormHandler = (e) => {
-    e.preventDefault();
-
-    setFormValues("");
-    setErrors("");
-  }; */
+  const { handleInputChange } = useForm({});
+  const formValues = props.formValues;
+  const errors = props.errors;
 
   return (
     <form onSubmit={submitFormHandler}>

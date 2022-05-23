@@ -1,12 +1,26 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import "./Home.css";
 import "antd/dist/antd.css";
 import Navbar from "../components/Navbar";
 import { Layout } from "antd";
-import { Table, Space } from "antd";
+import { Table, Space, Modal } from "antd";
+import HomeForm from "../components/home/HomeForm";
 
 function ContactInfo(props) {
   const contacts = props.items;
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const columns = [
     {
@@ -40,7 +54,15 @@ function ContactInfo(props) {
       key: "x",
       render: (record) => (
         <Space size="middle">
-          <a>Update</a>
+          <a onClick={showModal}>Update</a>
+          <Modal
+            title="Update user data"
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+            <HomeForm />
+          </Modal>
           <a onClick={() => props.onDeleteUser(record)}>Delete</a>
         </Space>
       ),
