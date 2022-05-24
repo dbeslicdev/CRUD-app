@@ -5,19 +5,35 @@ import Navbar from "../components/Navbar";
 import { Layout } from "antd";
 import { Table, Space, Modal } from "antd";
 import HomeForm from "../components/home/HomeForm";
+import { useForm } from "../hooks/useForm";
 
-function ContactInfo({ contacts, onDeleteUser }) {
+function ContactInfo({ contacts, setContact, onDeleteUser }) {
+  const { handleInputChange, formValues, errors, setFormValues } = useForm({
+    firstname: "",
+    lastname: "",
+    date: "",
+    contacttype: "",
+    contact: "",
+  });
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const showModal = () => {
+  const showModal = (record) => {
     setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
+    setFormValues(record);
   };
 
   const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleSubmit = () => {
+    console.log("submit");
+    console.log(formValues, "formValues", contacts, "kontakti");
+    const updatedContacts = contacts.map((contact) =>
+      contact.id === formValues.id ? formValues : contact
+    );
+
+    setContact(updatedContacts);
     setIsModalVisible(false);
   };
 
@@ -53,14 +69,18 @@ function ContactInfo({ contacts, onDeleteUser }) {
       key: "x",
       render: (record) => (
         <Space size="middle">
-          <a onClick={showModal}>Update</a>
+          <a onClick={() => showModal(record)}>Update</a>
           <Modal
             title="Update user data"
             visible={isModalVisible}
-            onOk={handleOk}
+            onOk={handleSubmit}
             onCancel={handleCancel}
           >
-            <HomeForm />
+            <HomeForm
+              handleInputChange={handleInputChange}
+              formValues={formValues}
+              errors={errors}
+            />
           </Modal>
           <a onClick={() => onDeleteUser(record)}>Delete</a>
         </Space>

@@ -38,7 +38,7 @@ function Home(props) {
       navigate("/contact-info");
       alert("Your form has been submitted successfully");
       props.onAddContact(formData);
-      console.log(formData);
+      /* console.log(formData); */
     }
   };
 

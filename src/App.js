@@ -34,7 +34,11 @@ function App() {
         <Route
           path="/contact-info"
           element={
-            <ContactInfo contacts={contacts} onDeleteUser={deleteUserHandler} />
+            <ContactInfo
+              contacts={contacts}
+              onDeleteUser={deleteUserHandler}
+              setContact={setContact}
+            />
           }
         />
       </Routes>
