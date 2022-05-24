@@ -3,11 +3,12 @@ import Login from "./Pages/Login";
 import Home from "./Pages/Home";
 import ErrorPage from "./Pages/ErrorPage";
 import ContactInfo from "./Pages/ContactInfo";
+import { useForm } from "../src/hooks/useForm";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [contacts, setContact] = useState([]);
+  const { contacts, setContact } = useForm();
 
   const addContactHandler = (contact) => {
     setContact((prevContacts) => {
@@ -33,7 +34,7 @@ function App() {
         <Route
           path="/contact-info"
           element={
-            <ContactInfo items={contacts} onDeleteUser={deleteUserHandler} />
+            <ContactInfo contacts={contacts} onDeleteUser={deleteUserHandler} />
           }
         />
       </Routes>

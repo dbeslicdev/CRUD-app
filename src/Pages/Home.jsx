@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useForm } from "../hooks/useForm";
 
 function Home(props) {
-  const { formValues, errors, setFormValues, setErrors, handleInputChange } =
+  const { formValues, setFormValues, errors, setErrors, handleInputChange } =
     useForm({
       firstname: "",
       lastname: "",

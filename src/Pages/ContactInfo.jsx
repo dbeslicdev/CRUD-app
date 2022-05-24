@@ -6,8 +6,7 @@ import { Layout } from "antd";
 import { Table, Space, Modal } from "antd";
 import HomeForm from "../components/home/HomeForm";
 
-function ContactInfo(props) {
-  const contacts = props.items;
+function ContactInfo({ contacts, onDeleteUser }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
@@ -63,7 +62,7 @@ function ContactInfo(props) {
           >
             <HomeForm />
           </Modal>
-          <a onClick={() => props.onDeleteUser(record)}>Delete</a>
+          <a onClick={() => onDeleteUser(record)}>Delete</a>
         </Space>
       ),
     },
