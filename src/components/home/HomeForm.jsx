@@ -1,11 +1,11 @@
-import React from "react";
+import { React } from "react";
 
-function HomeForm({
-  formValues,
-  errors,
+export const HomeForm = ({
   submitFormHandler,
+  formValues,
   handleInputChange,
-}) {
+  errors,
+}) => {
   return (
     <form onSubmit={submitFormHandler}>
       <div className="form-input__controls">
@@ -79,6 +79,4 @@ function HomeForm({
       </div>
     </form>
   );
-}
-
-export default HomeForm;
+};
