@@ -21,6 +21,7 @@ export const HomeProvider = ({ children }) => {
     <HomeContext.Provider
       value={{
         contacts,
+        setContact,
         addContactHandler,
         errors,
         setErrors,

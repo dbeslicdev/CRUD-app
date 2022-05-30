@@ -1,22 +1,11 @@
-import { React, useContext } from "react";
+/* import { React, useContext } from "react";
 import { Table, Space, Modal } from "antd";
 import { HomeForm } from "../home/HomeForm";
 import { ContactContext } from "../contacts/ContactContext";
 
 export const ContactForm = () => {
-  const {
-    showModal,
-    isModalVisible,
-    handleSubmit,
-    handleCancel,
-    handleInputChange,
-    formValues,
-    errors,
-    onDeleteUser,
-    contacts,
-  } = useContext(ContactContext);
-  
- 
+  const { contacts } = useContext(ContactContext);
+
   const columns = [
     {
       title: "Name",
@@ -70,3 +59,4 @@ export const ContactForm = () => {
 
   return <Table dataSource={contacts} columns={columns} />;
 };
+ */

@@ -38,7 +38,7 @@ function Home() {
       navigate("/contact-info");
       alert("Your form has been submitted successfully");
       addContactHandler(formData);
-      console.log(formData);
+      /* console.log(formData); */
     }
   };
 
