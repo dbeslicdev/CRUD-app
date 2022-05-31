@@ -74,6 +74,7 @@ export const HomeForm = ({
         </div>
         <div className="form-input__action">
           <button type="submit">Submit</button>
+          {}
           {/* <button onClick={resetFormHandler}>Clear</button> */}
         </div>
       </div>

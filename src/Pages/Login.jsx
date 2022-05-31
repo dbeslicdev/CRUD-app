@@ -1,19 +1,18 @@
 import "./Login.css";
-import React from "react";
+import { React, useState } from "react";
 import "antd/dist/antd.css";
 import { Layout } from "antd";
 import { useForm } from "../hooks/useForm";
-import { useNavigate } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
 import LoginForm from "../components/login/LoginForm";
 
 function Login() {
-  const { formValues, errors, handleInputChange, setFormValues, setErrors } =
-    useForm({
-      password: "",
-      username: "",
-    });
+  const { formValues, errors, setFormValues, setErrors } = useForm({
+    password: "",
+    username: "",
+  });
 
-  let navigate = useNavigate("");
+  const [user, setUser] = useState("");
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -21,7 +20,6 @@ function Login() {
 
     if (isValid) {
       setFormValues("");
-      navigate("/home");
     }
   };
 
@@ -39,11 +37,11 @@ function Login() {
   };
   return (
     <div>
-      <Layout className="layout">
+      <Layout>
+        <Navbar />
         <LoginForm
           formValues={formValues}
           errors={errors}
-          handleInputChange={handleInputChange}
           submitFormHandler={submitFormHandler}
         />
       </Layout>

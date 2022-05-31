@@ -16,7 +16,7 @@ function LoginForm({
               type="text"
               value={formValues.username}
               onChange={handleInputChange}
-              name="username"
+              name="username"              
             />
             <br />
             {errors && formValues.username.length < 5

@@ -17,6 +17,12 @@ function ContactInfo() {
     );
     setContact(updatedContacts);
     setIsModalVisible(false);
+
+    
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
   };
 
   const deleteUserHandler = (record) => {
@@ -28,10 +34,6 @@ function ContactInfo() {
   const showModal = (record) => {
     setIsModalVisible(true);
     setFormValues(record);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
   };
 
   return (
