@@ -1,11 +1,17 @@
-/* import { React, useContext } from "react";
+import { React } from "react";
 import { Table, Space, Modal } from "antd";
 import { HomeForm } from "../home/HomeForm";
-import { ContactContext } from "../contacts/ContactContext";
 
-export const ContactForm = () => {
-  const { contacts } = useContext(ContactContext);
-
+export const ContactForm = ({
+  formValues,
+  contacts,
+  showModal,
+  isModalVisible,
+  handleSubmit,
+  handleCancel,
+  handleInputChange,
+  deleteUserHandler,
+}) => {
   const columns = [
     {
       title: "Name",
@@ -48,10 +54,9 @@ export const ContactForm = () => {
             <HomeForm
               handleInputChange={handleInputChange}
               formValues={formValues}
-              errors={errors}
             />
           </Modal>
-          <a onClick={() => onDeleteUser(record)}>Delete</a>
+          <a onClick={() => deleteUserHandler(record)}>Delete</a>
         </Space>
       ),
     },
@@ -59,4 +64,3 @@ export const ContactForm = () => {
 
   return <Table dataSource={contacts} columns={columns} />;
 };
- */
