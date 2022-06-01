@@ -16,7 +16,7 @@ export function Navbar() {
       onClick={handleClick}
       theme="dark"
       mode="horizontal"
-      selectedKeys={current}
+      selectedKeys={[current]}
     >
       <Menu.Item key="home">
         <Link to="/home">Home</Link>

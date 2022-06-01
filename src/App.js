@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Counter } from "./Pages/Counter";
 import { HomeProvider } from "./components/home/HomeContext";
 import { AuthProvider } from "./components/authentication/AuthContext";
+import { RequireAuth } from "./components/authentication/RequireAuth";
 
 function App() {
   return (
@@ -17,8 +18,23 @@ function App() {
             <Route path="*" element={<ErrorPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/counter" element={<Counter />} />
-            <Route exact path="/home" element={<Home />} />
-            <Route path="/contact-info" element={<ContactInfo />} />
+            <Route
+              exact
+              path="/home"
+              element={
+                <RequireAuth>
+                  <Home />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/contact-info"
+              element={
+                <RequireAuth>
+                  <ContactInfo />
+                </RequireAuth>
+              }
+            />
           </Routes>
         </Router>
       </HomeProvider>
