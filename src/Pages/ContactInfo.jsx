@@ -1,9 +1,7 @@
 import { React, useState, useContext } from "react";
 import "./Home.css";
 import "antd/dist/antd.css";
-import Navbar from "../components/Navbar";
 import { ContactForm } from "../components/contacts/ContactForm";
-import { Layout } from "antd";
 import { HomeContext } from "../components/home/HomeContext";
 
 function ContactInfo() {
@@ -17,8 +15,6 @@ function ContactInfo() {
     );
     setContact(updatedContacts);
     setIsModalVisible(false);
-
-    
   };
 
   const handleCancel = () => {
@@ -37,19 +33,16 @@ function ContactInfo() {
   };
 
   return (
-    <Layout className="layout">
-      <Navbar />
-      <ContactForm
-        formValues={formValues}
-        contacts={contacts}
-        showModal={showModal}
-        isModalVisible={isModalVisible}
-        handleSubmit={handleSubmit}
-        handleCancel={handleCancel}
-        handleInputChange={handleInputChange}
-        deleteUserHandler={deleteUserHandler}
-      />
-    </Layout>
+    <ContactForm
+      formValues={formValues}
+      contacts={contacts}
+      showModal={showModal}
+      isModalVisible={isModalVisible}
+      handleSubmit={handleSubmit}
+      handleCancel={handleCancel}
+      handleInputChange={handleInputChange}
+      deleteUserHandler={deleteUserHandler}
+    />
   );
 }
 

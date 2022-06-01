@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import "./Home.css";
 import "antd/dist/antd.css";
-import Navbar from "../components/Navbar";
 import { HomeForm } from "../components/home/HomeForm";
-import { Layout } from "antd";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { HomeContext } from "../components/home/HomeContext";
@@ -65,15 +63,12 @@ function Home() {
   };
 
   return (
-    <Layout className="layout">
-      <Navbar />
-      <HomeForm
-        submitFormHandler={submitFormHandler}
-        formValues={formValues}
-        handleInputChange={handleInputChange}
-        errors={errors}
-      />
-    </Layout>
+    <HomeForm
+      submitFormHandler={submitFormHandler}
+      formValues={formValues}
+      handleInputChange={handleInputChange}
+      errors={errors}
+    />
   );
 }
 
