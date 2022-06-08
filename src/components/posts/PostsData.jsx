@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./PostsData.css";
-import { useFetch } from "../../hooks/useFetch";
+import { PostsContext } from "../posts/PostsContext";
 
 export const PostsData = () => {
-  const { data: posts } = useFetch(
-    "https://jsonplaceholder.typicode.com/posts/"
-  );
-
-  const { data: user } = useFetch("https://jsonplaceholder.typicode.com/users");
-
-  const [filter, setFilter] = useState("");
+  const { user, posts, filter, setFilter } = useContext(PostsContext);
 
   console.log(user);
   console.log(posts);
@@ -21,11 +15,12 @@ export const PostsData = () => {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
+
       {posts
         .filter((post) => post.title.includes(filter))
         .map((post) => (
           <ul>
-            <li key={posts.id}>
+            <li key={post.id}>
               <h4 className="title">{post.title}</h4>
               <p>{post.body}</p>
             </li>
