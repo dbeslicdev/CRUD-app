@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-export const useFetch = (api) => {
-  const [posts, setPosts] = useState([]);
+export const useFetch = (url) => {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(api.url)
+    fetch(url)
       .then((response) => response.json())
-      .then((json) => setPosts(json));
+      .then((json) => {
+        setData(json);
+      });
   }, []);
 
-  /* console.log(posts); */
-
   return {
-    posts,
+    data,
   };
 };

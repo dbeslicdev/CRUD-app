@@ -5,4 +5,10 @@
 .post-container {
   margin: 0 auto;
   padding: 1rem 10rem;
+  max-width: 800px;
+}
+
+.post-container li {
+  list-style: none;
+  margin: 1rem 0;
 }
