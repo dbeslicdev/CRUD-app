@@ -5,18 +5,24 @@ import { useFilter } from "../../hooks/useFilter";
 export const PostsContext = createContext();
 
 export const PostsProvider = ({ children }) => {
-  const { data: posts } = useFetch(
+  const { data: postList, data: setPostList } = useFetch(
     "https://jsonplaceholder.typicode.com/posts/"
   );
-  const { data: user } = useFetch("https://jsonplaceholder.typicode.com/users");
+
+  const [id] = useState();
+
+  const { data: post } = useFetch(
+    `https://jsonplaceholder.typicode.com/posts/${id}`
+  );
 
   const { filter, setFilter } = useFilter("");
 
   return (
     <PostsContext.Provider
       value={{
-        posts,
-        user,
+        post,
+        postList,
+        setPostList,
         filter,
         setFilter,
       }}

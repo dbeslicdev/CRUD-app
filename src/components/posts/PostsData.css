@@ -18,3 +18,12 @@
   font-weight: 700;
   text-transform: capitalize;
 }
+
+p {
+  color: black;
+}
+
+li:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

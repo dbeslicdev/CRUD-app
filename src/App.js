@@ -10,6 +10,7 @@ import { AuthProvider } from "./components/authentication/AuthContext";
 import { RequireAuth } from "./components/authentication/RequireAuth";
 import { Posts } from "./Pages/Posts";
 import { PostsProvider } from "./components/posts/PostsContext";
+import { Post } from "./Pages/Post";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/counter" element={<Counter />} />
               <Route path="/posts" element={<Posts />} />
+              <Route path="/post/:id" element={<Post />} />
               <Route
                 exact
                 path="/home"

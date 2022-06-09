@@ -1,12 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import "./PostsData.css";
 import { PostsContext } from "../posts/PostsContext";
+import { Link } from "react-router-dom";
 
 export const PostsData = () => {
-  const { user, posts, filter, setFilter } = useContext(PostsContext);
+  const { user, postList, filter, setFilter } = useContext(PostsContext);
 
   console.log(user);
-  console.log(posts);
+  console.log(postList);
 
   return (
     <div className="posts">
@@ -16,14 +17,16 @@ export const PostsData = () => {
         onChange={(e) => setFilter(e.target.value)}
       />
 
-      {posts
+      {postList
         .filter((post) => post.title.includes(filter))
         .map((post) => (
           <ul>
-            <li key={post.id}>
-              <h4 className="title">{post.title}</h4>
-              <p>{post.body}</p>
-            </li>
+            <Link to={`/post/${post.id}`}>
+              <li key={post.id}>
+                <h4 className="title">{post.title}</h4>
+                <p>{post.body}</p>
+              </li>
+            </Link>
           </ul>
         ))}
     </div>
