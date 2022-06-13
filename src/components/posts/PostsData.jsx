@@ -4,10 +4,7 @@ import { PostsContext } from "../posts/PostsContext";
 import { Link } from "react-router-dom";
 
 export const PostsData = () => {
-  const { user, postList, filter, setFilter } = useContext(PostsContext);
-
-  console.log(user);
-  console.log(postList);
+  const { postList, filter, setFilter } = useContext(PostsContext);
 
   return (
     <div className="posts">
@@ -16,7 +13,6 @@ export const PostsData = () => {
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       />
-
       {postList
         .filter((post) => post.title.includes(filter))
         .map((post) => (

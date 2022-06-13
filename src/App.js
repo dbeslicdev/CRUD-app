@@ -13,6 +13,7 @@ import { PostsProvider } from "./components/posts/PostsContext";
 import { Post } from "./Pages/Post";
 
 function App() {
+  
   return (
     <AuthProvider>
       <HomeProvider>
