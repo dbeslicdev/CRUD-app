@@ -9,6 +9,10 @@ export const PostsProvider = ({ children }) => {
     "https://jsonplaceholder.typicode.com/posts/"
   );
 
+  const { data: postId, data: setPostId } = useFetch(
+    "https://jsonplaceholder.typicode.com/posts/1/comments"
+  );
+
   const { filter, setFilter } = useFilter("");
 
   return (
@@ -16,6 +20,8 @@ export const PostsProvider = ({ children }) => {
       value={{
         postList,
         setPostList,
+        postId,
+        setPostId,
         filter,
         setFilter,
       }}
