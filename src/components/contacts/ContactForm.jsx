@@ -61,6 +61,6 @@ export const ContactForm = ({
       ),
     },
   ];
-
+  //
   return <Table dataSource={contacts} columns={columns} />;
 };
